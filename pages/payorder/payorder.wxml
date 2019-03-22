@@ -1,0 +1,33 @@
+<!-- 可用组件：https://mp.weixin.qq.com/debug/wxadoc/dev/component/ -->
+<view class="payorder">
+  <view class="restaurant">
+    {{ order.restaurant }}
+  </view>
+  <view class="ocunt">
+    <text>已点{{ cartmsg.allCount }}个菜</text>
+    <text>订单号xxxxxx</text>
+  </view>
+  <view class="orderList">
+    <view class="time">
+      下单时间:{{time}}
+    </view>
+    <view class="orderList-item">
+      <view class="orderList-item-top">
+        <text>菜品</text>
+        <text>数量</text>
+        <text>单价</text>
+      </view>
+      <view class="orderList-item-one" wx:for="{{ cartmsg.cart }}" wx:key="index">
+        <text>{{ item.name }}</text>
+        <text>{{ item.count }}</text>
+        <text>{{ item.price }}元</text>
+      </view>
+    </view>
+    <view class="bottom">
+      <text>总价</text>
+      <text>{{ cartmsg.allPrice }}</text>
+    </view>
+  </view>
+  <view class="tip">实付金额以买单时为准</view>
+  <view bindtap="payMoney" class="start-pay">去付款</view>
+</view>

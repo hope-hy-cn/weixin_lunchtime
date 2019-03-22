@@ -1,0 +1,49 @@
+<!-- 定位 -->
+<view class='geolocation'>
+  <image style='width: 30px; height: 25px; margin-top: 8px' src='../../icons/location.png'></image>
+  <!--当前位置 选择位置-->
+  <text bindtap="chooseLocation">{{currentCity}}</text>
+</view>
+
+<!-- 轮播图 -->
+<view class="swiper-container">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px" indicator-active-color="#fff" indicator-color="#ed4d30">
+    <block wx:for="{{ imgUrls }}" wx:key="index">
+      <swiper-item>
+        <image src="{{ item }}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<!-- 详情 -->
+<view class="detail">
+  <view class="d-type">
+    <!--wait info-->
+    <view wx:for="{{ waitInfo }}" wx:key="unique">
+      <view class="kind">
+        {{ item.kind }}
+      </view>
+      <view class="number">
+        {{ item.number }}
+      </view>
+    </view>
+    <!--restaurant rulers-->
+    <text>{{ detailRules }}</text>
+  </view>
+  <!--restaurant-info-->
+  <view class="restaurant-info">
+    <view class="top">
+      <image src="{{ restaurant.img }}"></image>
+      <view class="top-center">
+        <text class="top-center-name">{{ restaurant.name }}</text>
+        <text class="restaurant-grade {{ restaurant.grade }} iconfont icon-wuxing"></text>
+      </view>
+      <view class="distance">距离{{ restaurant.distance }}km</view>
+    </view>
+    <navigator url="../map/map" hover-class="none" class="r-i-address iconfont icon-icglobaltitlebar48iconfontmap triangle">{{ restaurant.address }}</navigator>
+    <view bindtap="callPhone" class="r-i-tel iconfont icon-dianhua triangle">{{ restaurant.tel }}</view>
+    <view class="r-i-time iconfont icon-shijian">营业时间：{{ restaurant.time }}</view>
+  </view>
+</view>
+<navigator url="../order/order" hover-class="none" class="take-number">立即点餐</navigator>

@@ -1,0 +1,11 @@
+<map
+  class= "mapstyle"
+  id="map"
+  latitude="30.623632"
+  longitude="104.076424"
+  scale="15"
+  markers="{{markers}}"
+  bindmarkertap="markertap"
+  show-location
+  style="width: 100%; height: 100%;"
+></map>
